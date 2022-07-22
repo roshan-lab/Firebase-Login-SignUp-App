@@ -61,7 +61,25 @@ class _SignupPageState extends State<SignupPage> {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn()));
                     }).onError((error, stackTrace){
 
-                      print("Error");
+                      //print("Error");
+                      AlertDialog alert = AlertDialog(
+                        title: Text("Warning"),
+                        content: Text("Enter Valid Email / Password"),
+                        actions: [
+                       TextButton(
+                      child: Text("OK"),
+                          onPressed: () {
+                        Navigator.pop(context);
+                          },
+                      )
+                        ],
+                      );
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return alert;
+                        },
+                      );
                     });
                   }),
                   IconButton(onPressed:(){
@@ -81,3 +99,4 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 }
+
